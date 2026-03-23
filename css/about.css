@@ -1,0 +1,53 @@
+/*---------------about section---------*/
+@font-face {
+    font-family: 'poppins';
+    src: url('../webfonts/pop-SemiBold.ttf');
+}
+:root {
+    --clr1: #f95b11;
+    --clr2: #fff;
+    --clr3: #000;
+    --clr4: #f42f1d;
+    --clr5: limegreen;
+}
+
+.about-sec {
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr;
+}
+
+.img img {
+    width: 45rem;
+    height: auto;
+    animation: icon 4s ease infinite;
+    text-align: center;
+}
+.about-content p {
+    padding-bottom: 2rem;
+    color: var(--clr3);
+    font-size: 1.4rem;
+    font-weight: 300;
+
+}
+
+.about-inner h5 {
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.about-inner h5:hover {
+    transition: 1s ease;
+    transform: translateX(2rem);
+}
+
+.about-inner .fas {
+    color: var(--clr4);
+    padding-right: 1rem;
+}
+
+.about-content .btn {
+    border: .1rem solid var(--clr4);
+}

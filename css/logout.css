@@ -1,0 +1,25 @@
+
+
+.logout {
+	text-decoration: none;
+    float:left;
+    color: white;
+    overflow: hidden;
+    margin-right: 2rem;
+}
+.btn12{
+    width: 100%;
+    padding:1rem 1rem;
+    font-size: 2rem;
+    color:var(--white);
+    background-color: var(--red);
+    cursor: pointer;
+    text-transform: capitalize;
+    text-align: center;
+ }
+.a{
+    text-align: center;
+    font-size: 100px;
+    text-decoration: none;
+    text-shadow: 1rem;
+}

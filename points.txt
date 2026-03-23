@@ -1,0 +1,3 @@
+admin logout back login
+header in cart or checkout forget password
+user icon user login
