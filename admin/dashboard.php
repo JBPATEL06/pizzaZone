@@ -233,7 +233,7 @@ session_start();
                 </div>
             </div>
         </div>   
-        <footer class="footer"> © Copyright @ 2022 PizzaZone By Rutvik Parmar & Nayan Jadav | All Rights Reserved! </footer>
+        <footer class="footer"> © Copyright @ 2026 FlowerZone By Rutvik Parmar & Nayan Jadav | All Rights Reserved! </footer>
   
     </div>
    

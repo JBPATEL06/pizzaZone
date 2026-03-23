@@ -2,6 +2,11 @@
 @include 'pages/connection.php';
 session_start();
 
+if(!isset($_SESSION['userData'])){
+   header('location:pages/login.php');
+   exit();
+}
+
 if(isset($_POST['order_btn'])){
    $userId = $_SESSION['userId'];
    $name = $_POST['name'];
@@ -16,12 +21,12 @@ if(isset($_POST['order_btn'])){
    $pin_code = $_POST['pin_code'];
    
 
-   $cart_query = mysqli_query($conn, "SELECT * FROM `cart`");
+   $cart_query = mysqli_query($conn, "SELECT * FROM `cart` WHERE userId='$userId'");
    $price_total = 0;
    if(mysqli_num_rows($cart_query) > 0){
       while($product_item = mysqli_fetch_assoc($cart_query)){
          $product_name[] = $product_item['name'] .' ('. $product_item['quantity'] .') ';
-         $product_price = number_format($product_item['price'] * $product_item['quantity']);
+         $product_price = ($product_item['price'] * $product_item['quantity']);
          $price_total += $product_price;
       };
    };
@@ -33,20 +38,20 @@ if(isset($_POST['order_btn'])){
       echo "
       <div class='order-message-container'>
       <div class='message-container'>
-         <h3>thank you for shopping!</h3>
+         <h3>thank you for choosing FlowerZone!</h3>
          <div class='order-detail'>
             <span>".$total_product."</span>
             <span class='total'> total : ₹".$price_total."/-  </span>
          </div>
          <div class='customer-details'>
-            <p> your name : <span>".$name."</span> </p>
-            <p> your number : <span>".$number."</span> </p>
-            <p> your email : <span>".$email."</span> </p>
-            <p> your address : <span>".$flat.", ".$street.", ".$city.", ".$state.", ".$country." - ".$pin_code."</span> </p>
-            <p> your payment mode : <span>".$method."</span> </p>
-            <p>(*pay when product arrives*)</p>
+            <p> name : <span>".$name."</span> </p>
+            <p> contact : <span>".$number."</span> </p>
+            <p> email : <span>".$email."</span> </p>
+            <p> delivery address : <span>".$flat.", ".$street.", ".$city.", ".$state.", ".$country." - ".$pin_code."</span> </p>
+            <p> payment mode : <span>".$method."</span> </p>
+            <p>(*pay on delivery*)</p>
          </div>
-            <a href='menu.php' class='btn'>continue shopping</a>
+            <a href='menu.php' class='btn'>explore more bouquets</a>
          </div>
       </div>
       ";
@@ -63,7 +68,7 @@ if(isset($_POST['order_btn'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>checkout</title>
+   <title>Secure Checkout | FlowerZone</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="./fontawsome/all.min.css">
@@ -78,28 +83,29 @@ if(isset($_POST['order_btn'])){
 
 <section class="checkout-form">
 
-   <h1 class="heading">complete your order</h1>
+   <h1 class="heading">Complete Your Floral Order</h1>
 
    <form action="" method="post">
 
    <div class="display-order">
       <?php
-         $select_cart = mysqli_query($conn, "SELECT * FROM `cart`");
+         $userId = $_SESSION['userId'];
+         $select_cart = mysqli_query($conn, "SELECT * FROM `cart` WHERE userId='$userId'") or die('query failed');
          $total = 0;
          $grand_total = 0;
          if(mysqli_num_rows($select_cart) > 0){
             while($fetch_cart = mysqli_fetch_assoc($select_cart)){
-            $total_price = number_format($fetch_cart['price'] * $fetch_cart['quantity']);
+            $total_price = ($fetch_cart['price'] * $fetch_cart['quantity']);
             $grand_total = $total += $total_price;
       ?>
       <span><?= $fetch_cart['name']; ?>(<?= $fetch_cart['quantity']; ?>)</span>
       <?php
          }
       }else{
-         echo "<div class='display-order'><span>your cart is empty!</span></div>";
+         echo "<div class='display-order'><span>your floral order is empty!</span></div>";
       }
       ?>
-      <span class="grand-total"> grand total : ₹<?= $grand_total; ?>/- </span>
+      <span class="grand-total"> total amount : ₹<?= $grand_total; ?>/- </span>
    </div>
 
       <div class="flex">
@@ -118,8 +124,8 @@ if(isset($_POST['order_btn'])){
          <div class="inputBox">
             <span>payment method</span>
             <select name="method">
-               <option value="cash on delivery" selected>cash on devlivery</option>
-               <option value="credit cart">credit cart</option>
+               <option value="cash on delivery" selected>cash on delivery</option>
+               <option value="credit card">credit card</option>
                <option value="paypal">paypal</option>
             </select>
          </div>
@@ -148,7 +154,7 @@ if(isset($_POST['order_btn'])){
             <input type="text" placeholder="e.g. 123456" name="pin_code" required>
          </div>
       </div>
-      <input type="submit" value="order now" name="order_btn" class="btn">
+      <input type="submit" value="place order" name="order_btn" class="btn">
    </form>
 
 </section>
@@ -156,7 +162,7 @@ if(isset($_POST['order_btn'])){
 </div>
 
 <!-- custom js file link  -->
-<script src="script.js"></script>
+<script type="module" src="js/script.js"></script>
    
 </body>
 </html>

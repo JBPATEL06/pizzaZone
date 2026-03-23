@@ -4,6 +4,11 @@
 include("./pages/connection.php");	
 include("./pages/header.php");
 session_start();
+
+if(!isset($_SESSION['userData'])){
+   header('location:pages/login.php');
+   exit();
+}
 ?>
 
 <?php
@@ -142,10 +147,10 @@ td, th {
 						  
 							<?php 
 						 $userId = $_SESSION['userId'];
-						$query_res= mysqli_query($conn,"select * from orders WHERE userId='$userId'");
+						$query_res= mysqli_query($conn,"select * from orders WHERE userId='$userId'") or die('query failed');
 												if(!mysqli_num_rows($query_res) > 0 )
 														{
-															echo '<td colspan="6"><center>You have No orders Placed yet. </center></td>';
+															echo '<td colspan="6"><center>You have no floral orders yet.</center></td>';
 														}
 													else
 														{			      
@@ -157,25 +162,25 @@ td, th {
 												<tr>	
 														 <td data-column="total_products"> <?php echo $row['total_products']; ?></td>
 														  <td data-column="method"> <?php echo $row['method']; ?></td>
-														  <td data-column="total_price">$<?php echo $row['total_price']; ?></td>
+														  <td data-column="total_price">₹<?php echo $row['total_price']; ?></td>
 														   <td data-column="status"> 
 														   <?php 
 																			$status=$row['status'];
 																			if($status=="" or $status=="NULL")
 																			{
 																			?>
-																			<button type="button" class="bt"><span class="fa fa-bars"  aria-hidden="true" ></span> Dispatch</button>
+																			<button type="button" class="bt"><span class="fa fa-spa"  aria-hidden="true" ></span> Preparing</button>
 																		   <?php 
 																			  }
 																			   if($status=="in process")
 																			 { ?>
-																				<button type="button" class="bt"><span class="fa fa-cog fa-spin"  aria-hidden="true" ></span> On The Way!</button>
+																				<button type="button" class="bt"><span class="fa fa-truck-fast fa-beat"  aria-hidden="true" ></span> Delivering</button>
 																			<?php
 																				}
 																			if($status=="closed")
 																				{
 																			?>
-																			 <button type="button" class="bt" ><span  class="fa fa-check-circle" aria-hidden="true"></span> Delivered</button> 
+																			 <button type="button" class="bt" ><span  class="fa fa-circle-check" aria-hidden="true"></span> Arrived</button> 
 																			<?php 
 																			} 
 																			?>
@@ -183,7 +188,7 @@ td, th {
 																			if($status=="rejected")
 																				{
 																			?>
-																			 <button type="button" class="bt"> <i class="fa fa-close"></i> Cancelled</button>
+																			 <button type="button" class="bt"> <i class="fa fa-circle-xmark"></i> Cancelled</button>
 																			<?php 
 																			} 
 																			?>
@@ -194,11 +199,11 @@ td, th {
 												
 																{
                 												  ?>
-																	<td data-column="Action"> Order Delivered <a ><i class="fa fa-check-circle" style="font-size:16px"></i></a> 
+																	<td data-column="Action"> Order Delivered <a><i class="fa fa-check-circle" style="font-size:16px"></i></a></td> 
             												      <?php
           														  } else {
              												     ?>
-																	<td data-column="Action"> <a href="delete_orders.php?order_del=<?php echo $row['id'];?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn1"><i class="fas fa-trash" style="font-size:16px"></i></a> 
+																	<td data-column="Action"> <a href="delete_orders.php?order_del=<?php echo $row['id'];?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn1"><i class="fas fa-trash" style="font-size:16px"></i></a></td> 
 
              									</tr>
 																	
@@ -214,5 +219,5 @@ td, th {
 </section>
 
 </body>
-<?php }?>
+<?php } ?>
 </html>

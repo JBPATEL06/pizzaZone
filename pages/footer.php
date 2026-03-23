@@ -25,18 +25,18 @@
       <div class="box">
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
-         <p>info@pizzazone.com</p>
+         <p>info@flowerzone.com</p>
       </div>
 
    </div>
 
    <div class="credit">
-      &copy; copyright @ 2022 by <span>Rutvik Parmar & Nayan Jadav</span> | all rights reserved!
+      &copy; copyright @ 2026 by <span>FlowerZone Team</span> | all rights reserved!
    </div>
 
 </section>
 
 <!-- footer section ends -->
-<script src="js/script.js"></script>
+<script type="module" src="js/script.js"></script>
 </body>
 </html>

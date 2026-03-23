@@ -5,7 +5,7 @@ session_start();
 $servername = "localhost"; //server
 $username = "root"; //username
 $password = ""; //password
-$dbname = "pizzazone";  //database
+$dbname = "flowerzone";  //database
 
 // Create connection
 $db = mysqli_connect($servername, $username, $password, $dbname); // connecting 
@@ -233,7 +233,7 @@ if(isset($_GET['id'])){
              
             </div>
          
-            <footer class="footer"> © Copyright @ 2022 PizzaZone By Rutvik Parmar & Nayan Jadav | All Rights Reserved! </footer>
+            <footer class="footer"> © Copyright @ 2026 FlowerZone By Rutvik Parmar & Nayan Jadav | All Rights Reserved! </footer>
            
         </div>
        

@@ -1,57 +1,62 @@
-@font-face {
-    font-family: 'poppins';
-    src: url('../webfonts/pop-SemiBold.ttf');
-  }
-:root{
-    --red:#e74c3c;
-    --black:#333;
-    --white:#fff;
-    --light-bg:#f5f5f5;
-    --light-color:#666;
-    --border:.1rem solid var(--light-color);
-    --skyblue:#00f7ff;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
- }
-/*---------------service section------*/
+:root {
+   --primary: #8a9a5b;
+   --secondary: #d4a5a5;
+   --black: #2c3e50;
+   --white: #ffffff;
+   --light-bg: #faf9f6;
+   --light-color: #7f8c8d;
+   --border: 1px solid rgba(44, 62, 80, 0.1);
+   --box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+   --transition: all 0.4s ease;
+}
 
 .service-content {
-    margin-top: 2rem;
+    margin-top: 4rem;
     display: grid;
-    grid-template-columns: 1.2fr 1.2fr 1.2fr;
-    grid-gap: 1rem;
-    padding: 1%;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 3rem;
 }
 
-.service h2 {
-    display: block;
-    font-size: 2.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
 .inner-box {
-    padding: 3rem 2rem;
+    padding: 4rem 3rem;
     text-align: center;
-    border: .2rem solid var(--red);
-    background: #eee;
+    background: var(--white);
+    border-radius: 2rem;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    transition: var(--transition);
 }
 
 .inner-box:hover {
-    transition: .5s ease all;
+    transform: translateY(-1rem);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .inner-box img {
-    height: 20rem;
-    padding-right: 10px;
+    height: 18rem;
+    object-fit: contain;
+    margin-bottom: 2.5rem;
 }
 
+.inner-box h2 {
+    font-size: 2.2rem;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
 
 .inner-box p {
-    font-size: 1.4rem;
-    color: var(black);
+    font-size: 1.5rem;
+    color: var(--light-color);
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .service-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 

@@ -7,12 +7,13 @@ session_start();
 <php
 session_start();
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>PizzaZone</title>
+   <title>FlowerZone | Premium Bouquets</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="fontawsome/all.min.css">
@@ -30,7 +31,7 @@ session_start();
 <header class="header">
 
    <section class="flex">
-   <div class="logo"><a href="./index.php"><img src="images/logo.png"></a>
+   <div class="logo"><a href="./index.php"><img src="images/logo.png" alt="FlowerZone Logo"></a>
    </div>
       
       <nav class="navbar">
@@ -38,12 +39,12 @@ session_start();
       
          
          <a href="index.php">HOME</a>
-         <a href="menu.php">MENU</a>
-         <a href="about.php">ABOUT</a>
+         <a href="menu.php">COLLECTION</a>
+         <a href="about.php">OUR STORY</a>
          <a href="services.php">SERVICES</a>
          <a href="contact.php">CONTACT</a>
-         <a href="gallery.php">GALLARY</a>
-         <a href="review.php">REVIEW</a>
+         <a href="gallery.php">GALLERY</a>
+         <a href="review.php">REVIEWS</a>
          <a href="faq.php">FAQ</a>
          
       </nav>
@@ -87,8 +88,8 @@ session_start();
                   
             }
             ?>
-      <a href="cart.php"><div id="cart-btn" class="fas fa-shopping-cart"></span></div></a>
+      <a href="cart.php"><div id="cart-btn" class="fas fa-shopping-cart"></div></a>
 
    </section>
-</div>
+</header>
 

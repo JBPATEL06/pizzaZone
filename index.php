@@ -22,10 +22,10 @@ include("pages/header.php");
 
          <div class="slide active">
             <div class="image">
-               <img src="images/p5.png" alt="">
+               <img src="images/p5.png" alt="Midnight Rose Bouquet">
             </div>
             <div class="content">
-               <h3>homemade Pepperoni Pizza</h3>
+               <h3>Midnight Rose Bouquet</h3>
                <div class="fas fa-angle-left" onclick="prev()"></div>
                <div class="fas fa-angle-right" onclick="next()"></div>
             </div>
@@ -33,10 +33,10 @@ include("pages/header.php");
 
          <div class="slide">
             <div class="image">
-               <img src="images/home-img-2.png" alt="">
+               <img src="images/home-img-2.png" alt="Lilac Dreams Arrangement">
             </div>
             <div class="content">
-               <h3>Pizza With Mushrooms</h3>
+               <h3>Lilac Dreams Arrangement</h3>
                <div class="fas fa-angle-left" onclick="prev()"></div>
                <div class="fas fa-angle-right" onclick="next()"></div>
             </div>
@@ -44,10 +44,10 @@ include("pages/header.php");
 
          <div class="slide">
             <div class="image">
-               <img src="images/home-img-3.png" alt="">
+               <img src="images/home-img-3.png" alt="Sunflower Bliss Selection">
             </div>
             <div class="content">
-               <h3>Mascarpone And Mushrooms</h3>
+               <h3>Sunflower Bliss Selection</h3>
                <div class="fas fa-angle-left" onclick="prev()"></div>
                <div class="fas fa-angle-right" onclick="next()"></div>
             </div>
@@ -58,61 +58,61 @@ include("pages/header.php");
    </section>
 
 </div>
-<!-- POPULAR PIZZA SECTION START -->
+<!-- POPULAR BOUQUET SECTION START -->
 <section class="popular" id="popular">
-      <h1>POPULAR PIZZA'S</h1>
+      <h1>POPULAR BOUQUETS</h1>
       <div class="box-container">
          <div class="box">
-            <img src="images/maxvage.jpg">
-            <h2>MEXICAN GREEN WAVE</h2>
-            <p>A delight for veggie lovers! Choose from our wide range of delicious vegetarian pizzas, it's softer and tastier</p>
-            <a href="#">VIEW MENU</a>
+            <img src="images/maxvage.jpg" alt="Exotic Collection">
+            <h2>EXOTIC COLLECTION</h2>
+            <p>A delight for floral enthusiasts! Choose from our wide range of rare and exotic blooms, curated to perfection.</p>
+            <a href="menu.php">VIEW COLLECTION</a>
          </div>
          <div class="box">
-            <img src="images/paneer.jpg">
-            <h2>VEG EXTRAVAGANZA</h2>
-            <p> A pizza that decidedly staggers under an overload of golden corn, exotic black olives, crunchy onions, crisp capsicum,</p>
-            <a href="#">VIEW MENU</a>
+            <img src="images/paneer.jpg" alt="Wedding Grace">
+            <h2>WEDDING GRACE</h2>
+            <p>A selection that elegantly carries the weight of pure love, with white lilies and soft roses.</p>
+            <a href="menu.php">VIEW COLLECTION</a>
          </div>
          <div class="box">
-            <img src="images/makhni.jpg">
-            <h2>PANEER MAKHANI</h2>
-            <p>It is hot. It is spicy. It is oh-so-Indian. Tandoori paneer with capsicum I red paprika I mint mayoss</p>
-            <a href="#">VIEW MENU</a>
+            <img src="images/makhni.jpg" alt="Orchid Elegance">
+            <h2>ORCHID ELEGANCE</h2>
+            <p>It is sophisticated. It is timeless. It is FlowerZone signature. Exotic orchids with a touch of luxury.</p>
+            <a href="menu.php">VIEW COLLECTION</a>
          </div>
       </div>
 
 </section>
-<!-- POPULAR PIZZA SECTION END -->
+<!-- POPULAR BOUQUET SECTION END -->
 
-    <img src="images/Home.png" class="imghome" alt="" srcset="">
+     <img src="images/Home.png" class="imghome" alt="FlowerZone Banner">
 <!-- about section starts  -->
 
 <section class="about" id="about">
 
-   <h1 class="heading">about us</h1>
+   <h1 class="heading">About Us</h1>
 
    <div class="box-container">
 
       <div class="box">
-         <img src="images/about-1.svg" alt="">
-         <h3>made with love</h3>
-         <p>No matter what the situation, pizza always helps. Especially a pizza that gives you the freedom to choose your toppings.<br></p>
-         <a href="menu.php" class="btn">our menu</a>
+         <img src="images/about-1.svg" alt="Grown with Care">
+         <h3>grown with care</h3>
+         <p>No matter the occasion, flowers always convey the right message. Especially a bouquet that gives you freedom to customize.<br></p>
+         <a href="menu.php" class="btn">our collection</a>
       </div>
 
       <div class="box">
-         <img src="images/about-2.svg" alt="">
-         <h3>30 minutes delivery</h3>
-         <p>So stop googling for the “pizza shops near me” and order from your nearest pizza outlet to have a hot box of pizza on your table in the next 30 minutes.<br></p>
-         <a href="menu.php" class="btn">our menu</a>
+         <img src="images/about-2.svg" alt="Express Delivery">
+         <h3>express floral delivery</h3>
+         <p>Stop searching blindly for flowers. Order from FlowerZone for a fresh, beautiful bouquet at your doorstep in no time.<br></p>
+         <a href="menu.php" class="btn">our collection</a>
       </div>
 
       <div class="box">
-         <img src="images/about-3.svg" alt="">
-         <h3>share with freinds</h3>
-         <p>end-of-the-month blues while placing your order Online, check out from pizza mania combos with just ₹99 and ₹199 each.</p>
-         <a href="menu.php" class="btn">our menu</a>
+         <img src="images/about-3.svg" alt="Special Moments">
+         <h3>cherish special moments</h3>
+         <p>Celebrate your milestones with our premium floral arrangements. Check out our seasonal combos starting from ₹499.</p>
+         <a href="menu.php" class="btn">our collection</a>
       </div>
 
    </div>

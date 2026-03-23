@@ -1,67 +1,85 @@
-@font-face {
-  font-family: 'poppins';
-  src: url('../webfonts/pop-SemiBold.ttf');
-}
-*{
-  margin: 0;
-  padding: 0;
-  font-family: 'poppins';
-}
-.testimonials{
-  padding: 40px 0;
-  background: #f1f1f1;
-  color: #434343;
-  text-align: center;
-}
-.inner{
-  max-width: 1200px;
-  margin: auto;
-  overflow: hidden;
-  font-size: 15px;
-  padding: 0 20px;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+   --primary: #8a9a5b;
+   --secondary: #d4a5a5;
+   --black: #2c3e50;
+   --white: #ffffff;
+   --light-bg: #faf9f6;
+   --light-color: #7f8c8d;
+   --border: 1px solid rgba(44, 62, 80, 0.1);
+   --box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+   --transition: all 0.4s ease;
 }
 
-.row{
+.testimonials {
+  padding: 8rem 0;
+  background: var(--light-bg);
+  color: var(--black);
+  text-align: center;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 9%;
+}
+
+.row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 3rem;
 }
-.col{
-  flex: 33.33%;
-  max-width: 33.33%;
-  box-sizing: border-box;
-  padding: 15px;
+
+.col {
+  flex: 1 1 30rem;
+  max-width: 40rem;
 }
-.testimonial{
-  background: #fff;
-  padding: 30px;
+
+.testimonial {
+  background: var(--white);
+  padding: 4rem;
+  border-radius: 2rem;
+  box-shadow: var(--box-shadow);
+  border: var(--border);
+  transition: var(--transition);
 }
-.testimonial img{
-  width: 100px;
-  height: 100px;
+
+.testimonial:hover {
+  transform: translateY(-1rem);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.testimonial img {
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
-}
-.name{
-  font-size: 20px;
-  text-transform: uppercase;
-  margin: 20px 0;
-}
-.stars{
-  color: #6ab04c;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  object-fit: cover;
 }
 
+.name {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
 
-@media screen and (max-width:960px) {
-.col{
-  flex: 100%;
-  max-width: 80%;
-}
+.stars {
+  color: #f1c40f;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
 }
 
-@media screen and (max-width:600px) {
-.col{
-  flex: 100%;
-  max-width: 100%;
+.testimonial p {
+  font-size: 1.6rem;
+  color: var(--light-color);
+  line-height: 1.8;
+  font-style: italic;
 }
+
+@media screen and (max-width: 768px) {
+  .inner { padding: 0 2rem; }
+  .col { max-width: 100%; }
 }

@@ -44,13 +44,13 @@
         <div class="email details">
           <i class="fas fa-envelope"></i>
           <div class="topic">Email</div>
-          <div class="text-one">info@pizzazone.com</div>
-          <div class="text-two">pizzazone@gmail.com</div>
+          <div class="text-one">info@flowerzone.com</div>
+          <div class="text-two">support@flowerzone.com</div>
         </div>
       </div>
       <div class="right-side">
         <div class="topic-text">Send us a message</div>
-        <h2>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</h2>
+        <h2>If you have any questions about our floral arrangements or your order, feel free to reach out. We're here to help you bloom.</h2>
 
     
       <!-- Begin Mailchimp Signup Form -->

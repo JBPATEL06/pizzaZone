@@ -31,10 +31,14 @@ if(isset($_POST['add_product'])){
 ?>
 <?php
 if(isset($message)){
-   foreach($message as $message){
-      echo '<span class="message">'.$message.'</span>';
+   if(is_array($message)){
+      foreach($message as $msg){
+         echo '<div class="message"><span>'.$msg.'</span> <i class="fas fa-times" onclick="this.parentElement.style.display = `none`;"></i> </div>';
+      };
+   } else {
+      echo '<div class="message"><span>'.$message.'</span> <i class="fas fa-times" onclick="this.parentElement.style.display = `none`;"></i> </div>';
    }
-}
+};
 ?>
 <head>
     <meta charset="utf-8">
@@ -184,7 +188,7 @@ if(isset($message)){
                             
                         </div>
                     </div>
-                    <footer class="footer"> © Copyright @ 2022 PizzaZone By Rutvik Parmar & Nayan Jadav | All Rights Reserved! </footer>
+                    <footer class="footer"> © Copyright @ 2026 FlowerZone By Rutvik Parmar & Nayan Jadav | All Rights Reserved! </footer>
                 </div>               
             </div>
         </div>    

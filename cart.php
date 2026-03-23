@@ -7,6 +7,11 @@ if(empty($_SESSION['userData'])) {
    session_start();
 }
 
+if(!isset($_SESSION['userData'])){
+   header('location:pages/login.php');
+   exit();
+}
+
 if(isset($_POST['update_update_btn'])){
    $update_value = $_POST['update_quantity'];
    $update_id = $_POST['update_quantity_id'];
@@ -35,7 +40,7 @@ if(isset($_GET['delete_all'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>shopping cart</title>
+   <title>Your Floral Order | FlowerZone</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="fontawsome/all.min.css">
@@ -48,16 +53,16 @@ if(isset($_GET['delete_all'])){
 <div class="container">
 <section class="shopping-cart">
 
-   <h1 class="heading">shopping cart</h1>
+   <h1 class="heading">Your Floral Order</h1>
 
    <table>
 
       <thead>
-         <th>image</th>
-         <th>name</th>
+         <th>preview</th>
+         <th>bouquet</th>
          <th>price</th>
          <th>quantity</th>
-         <th>total price</th>
+         <th>subtotal</th>
          <th>action</th>
       </thead>
 
@@ -84,19 +89,19 @@ if(isset($_GET['delete_all'])){
                   <input type="submit" value="update" name="update_update_btn">
                </form>   
             </td>
-            <td>₹<?php echo $sub_total = number_format($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</td>
-            <td><a href="cart.php?remove=<?php echo $fetch_cart['id']; ?>" onclick="return confirm('remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
+            <td>₹<?php echo number_format($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</td>
+            <td><a href="cart.php?remove=<?php echo $fetch_cart['id']; ?>" onclick="return confirm('remove bouquet from order?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
          </tr>
          <?php
-           $grand_total += $sub_total;  
+           $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);  
             };
          };
          ?>
          <tr class="table-bottom">
-            <td><a href="menu.php" class="option-btn" style="margin-top: 0;">continue shopping</a></td>
-            <td colspan="3">grand total</td>
+            <td><a href="menu.php" class="option-btn" style="margin-top: 0;">explore more</a></td>
+            <td colspan="3">total amount</td>
             <td>₹<?php echo $grand_total; ?>/-</td>
-            <td><a href="cart.php?delete_all" onclick="return confirm('are you sure you want to delete all?');" class="delete-btn"> <i class="fas fa-trash"></i> delete all </a></td>
+            <td><a href="cart.php?delete_all" onclick="return confirm('clear entire order?');" class="delete-btn"> <i class="fas fa-trash"></i> clear all </a></td>
          </tr>
 
       </tbody>
@@ -104,8 +109,8 @@ if(isset($_GET['delete_all'])){
    </table>
 
    <div class="checkout-btn">
-      <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">procced to checkout</a>
-      <a href="menu.php" class="btn">Back To Menu</a>
+      <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">finalize order</a>
+      <a href="menu.php" class="btn">Back To Collection</a>
 
    </div>
 
@@ -114,7 +119,7 @@ if(isset($_GET['delete_all'])){
 </div>
    
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script type="module" src="js/script.js"></script>
 
 </body>
 </html>

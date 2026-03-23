@@ -14,22 +14,22 @@ include("pages/header.php");
 <br>
 <br>
 <section class="about" id="about">
-    <h1 class="heading"> About-Us</h1>
+    <h1 class="heading"> Our Story</h1>
 
     <div class="about-sec">
         <div class="img">
-            <img src="images/services.png" alt="img">
+            <img src="images/services.png" alt="FlowerZone Story">
         </div>
         <div class="about-content">
-            <p>Pizza Zone is the superb collective with the Italian food is based in different and unique concept and Its gives a choice of a range of vegetarian pizzas.</p>
+            <p>FlowerZone is a bespoke floral boutique dedicated to bringing nature's finest creations to your doorstep. Our philosophy is rooted in elegance, quality, and the timeless language of flowers.</p>
             <div class="about-inner">
-                <h5><i class="fas fa-arrow-alt-circle-right"></i>Good Quality</h5>
-                <h5><i class="fas fa-arrow-alt-circle-right"></i>Fresh Vagetables</h5>
-                <h5><i class="fas fa-arrow-alt-circle-right"></i>Available 24X7</h5>
-                <h5><i class="fas fa-arrow-alt-circle-right"></i>Best Price</h5>
-                <h5><i class="fas fa-arrow-alt-circle-right"></i>Best Quality</h5>
+                <h5><i class="fas fa-arrow-alt-circle-right"></i>Premium Selection</h5>
+                <h5><i class="fas fa-arrow-alt-circle-right"></i>Freshly Picked</h5>
+                <h5><i class="fas fa-arrow-alt-circle-right"></i>Same-Day Delivery</h5>
+                <h5><i class="fas fa-arrow-alt-circle-right"></i>Artisanal Designs</h5>
+                <h5><i class="fas fa-arrow-alt-circle-right"></i>Exquisite Quality</h5>
             </div>
-            <button class="btn">Read More</button>
+            <button class="btn">Learn More</button>
         </div>
     </div>
 </section>

@@ -71,7 +71,7 @@ if(isset($_REQUEST['pwdrst']))
      <p><b>Hello!</b></p>
      <p>You are recieving this email because we recieved a password reset request for your account.</p>
      <br>
-     <p><button class="btn btn-primary"><a href="http://localhost/pizzazone/pages/passwordreset.php?secret='.base64_encode($emailId).'">Reset Password</a></button></p>
+     <p><button class="btn btn-primary"><a href="http://localhost/flowerzone/pages/passwordreset.php?secret='.base64_encode($emailId).'">Reset Password</a></button></p>
      <br>
      <p>If you did not request a password reset, no further action is required.</p>
     </div>';
@@ -86,7 +86,7 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587; 
 $mail->Username = "rutvikparmar012@gmail.com";
 $mail->Password = "oocmhophnikfslwb";
-$mail->FromName = "pizzazone";
+$mail->FromName = "FlowerZone";
 $mail->AddAddress($email);
 $mail->Subject = "Reset Password";
 $mail->isHTML( TRUE );

@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pizzazone`
+-- Database: `flowerzone`
 --
 
 -- --------------------------------------------------------
@@ -59,8 +59,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `name`, `price`, `image`, `quantity`, `userId`) VALUES
-(70, 'farmhouse', '45', 'Farmhouse.jpg', 2, 40),
-(71, 'Italian Pizza', '150', 'Corn_&_Cheese.jpg', 1, 40);
+(70, 'Midnight Rose', '45', 'Farmhouse.jpg', 2, 40),
+(71, 'Lilac Dreams', '150', 'Corn_&_Cheese.jpg', 1, 40);
 
 -- --------------------------------------------------------
 
@@ -91,11 +91,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `number`, `email`, `method`, `flat`, `street`, `city`, `state`, `country`, `pin_code`, `total_products`, `total_price`, `status`, `userId`) VALUES
-(7, 'Rutvik', '24', 'nababurbd@gmail.com', 'credit cart', 'rt', 'ffdgf', 'botad', 'gujarat', 'India', 334710, 'foodplaza (1) , pizza (1) , pizza5 (1) ', '765', 'in process', 0),
-(8, 'Rutvik', '558585885', 'nababurbd@gmail.com', 'cash on delivery', 'rt', 'ffdgf', 'botad', 'gujarat', 'India', 334710, 'pizza5 (3) , foodplaza (1) , pizza (1) ', '1015', 'closed', 0),
-(14, 'Rutvik Parmar', '9586643802', 'rutvikparmar@gmail.com', 'cash on delivery', 'botad paliyad road', 'Botad', 'botad', 'gujarat', 'India', 334710, 'farmhouse (1) , Italian Pizza (1) , MARGHERITA (1) ', '274', NULL, 41),
-(15, 'Rutvik Parmar', '09586643802', 'rutvikparmar@gmail.com', 'cash on delivery', 'botad paliyad road', 'Botad', 'botad', 'gujarat', 'India', 334710, 'Italian Pizza (1) , farmhouse (1) ', '195', 'closed', 42),
-(16, 'Rutvik Parmar', '09586643802', 'rutvikparmar@gmail.com', 'cash on delivery', 'botad paliyad road', 'Botad', 'botad', 'gujarat', 'India', 334710, 'farmhouse (2) , Italian Pizza (1) ', '240', 'closed', 40);
+(7, 'Rutvik', '24', 'nababurbd@gmail.com', 'credit cart', 'rt', 'ffdgf', 'botad', 'gujarat', 'India', 334710, 'Midnight Rose (1), Lilac Dreams (1), Sunflower Bliss (1)', '765', 'in process', 0),
+(8, 'Rutvik', '558585885', 'nababurbd@gmail.com', 'cash on delivery', 'rt', 'ffdgf', 'botad', 'gujarat', 'India', 334710, 'Sunflower Bliss (3), Midnight Rose (1), Lilac Dreams (1)', '1015', 'closed', 0),
+(14, 'Rutvik Parmar', '9586643802', 'rutvikparmar@gmail.com', 'cash on delivery', 'botad paliyad road', 'Botad', 'botad', 'gujarat', 'India', 334710, 'Midnight Rose (1), Lilac Dreams (1), Sunflower Bliss (1)', '274', NULL, 41),
+(15, 'Rutvik Parmar', '09586643802', 'rutvikparmar@gmail.com', 'cash on delivery', 'botad paliyad road', 'Botad', 'botad', 'gujarat', 'India', 334710, 'Lilac Dreams (1), Midnight Rose (1)', '195', 'closed', 42),
+(16, 'Rutvik Parmar', '09586643802', 'rutvikparmar@gmail.com', 'cash on delivery', 'botad paliyad road', 'Botad', 'botad', 'gujarat', 'India', 334710, 'Midnight Rose (2), Lilac Dreams (1)', '240', 'closed', 40);
 
 -- --------------------------------------------------------
 
@@ -115,13 +115,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `image`) VALUES
-(33, 'farmhouse', '45', 'Farmhouse.jpg'),
-(36, 'Italian Pizza', '150', 'Corn_&_Cheese.jpg'),
-(37, 'MARGHERITA', '79', 'Margherit.jpg'),
-(38, 'FARM HOUSE', '129', 'Farmhouse.jpg'),
-(39, 'PEPPY PANEER', '178', 'pizza1.jpg'),
-(40, 'MEXICAN GREEN WAVE', '259', 'pizza2.jpg'),
-(41, 'DELUXE VEGGIES', '159', 'Farmhouse.jpg');
+(33, 'Midnight Rose', '45', 'Farmhouse.jpg'),
+(36, 'Lilac Dreams', '150', 'Corn_&_Cheese.jpg'),
+(37, 'Sunflower Bliss', '79', 'Margherit.jpg'),
+(38, 'Tulip Trio', '129', 'Farmhouse.jpg'),
+(39, 'Orchid Elegance', '178', 'pizza1.jpg'),
+(40, 'Peony Punch', '259', 'pizza2.jpg'),
+(41, 'Daisy Delight', '159', 'Farmhouse.jpg');
 
 -- --------------------------------------------------------
 
