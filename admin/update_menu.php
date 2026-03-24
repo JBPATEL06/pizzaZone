@@ -14,22 +14,28 @@ if(isset($_POST['update_product'])){
    $product_price = $_POST['product_price'];
    $product_image = $_FILES['product_image']['name'];
    $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-   $product_image_folder = 'images/'.$product_image;
 
-   if(empty($product_name) || empty($product_price)|| empty($product_image)){
-      $message[] = 'please fill out all!';    
+   if(empty($product_name) || empty($product_price)){
+      $message[] = 'please fill out all name and price!';    
    }
    else{
-
-      $update_data = "UPDATE products SET name='$product_name', price='$product_price', image='$product_image' WHERE id = '$id'";
+      if(!empty($product_image)){
+         $ext = pathinfo($product_image, PATHINFO_EXTENSION);
+         $new_name = $id . '.' . $ext;
+         $product_image_folder = '../uploads/' . $new_name;
+         move_uploaded_file($product_image_tmp_name, $product_image_folder);
+         $update_data = "UPDATE products SET name='$product_name', price='$product_price', image='$new_name' WHERE id = '$id'";
+      } else {
+         $update_data = "UPDATE products SET name='$product_name', price='$product_price' WHERE id = '$id'";
+      }
+      
       $upload = mysqli_query($conn, $update_data);
 
       if($upload){
-         move_uploaded_file($product_image_tmp_name, $product_image_folder);
          header('location:all_menu.php');
          echo "UPDATATION SUCCESSFULL";
       }else{
-         $$message[] = 'please fill out all!'; 
+         $message[] = 'database update failed!'; 
       }
 
    }
@@ -42,7 +48,7 @@ if(isset($_POST['update_product'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>">
     <title>Update Menu</title>
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/helper.css" rel="stylesheet">
@@ -66,7 +72,7 @@ if(isset($_POST['update_product'])){
             <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         
-                    <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
+                    <span><img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
                 <div class="navbar-collapse">

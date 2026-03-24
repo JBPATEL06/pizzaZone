@@ -31,7 +31,7 @@ if(isset($_GET['delete'])){
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
-                        <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
+                        <span><img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -39,7 +39,7 @@ if(isset($_GET['delete'])){
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="images/usericn.png" alt="user" class="profile-pic" />
+                                <img src="../uploads/usericn.png" alt="user" class="profile-pic" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">

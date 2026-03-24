@@ -7,13 +7,22 @@ if(isset($_POST['add'])) {
     $subtitle = mysqli_real_escape_string($conn, $_POST['subtitle']);
     $image = $_FILES['image']['name'];
     $tmp_name = $_FILES['image']['tmp_name'];
-    $folder = '../images/'.$image;
     
-    if(move_uploaded_file($tmp_name, $folder)) {
-        mysqli_query($conn, "INSERT INTO slider_content (title, subtitle, image) VALUES ('$title', '$subtitle', '$image')");
-        $message[] = 'Slide added successfully!';
-        header('location:manage_slider.php');
-        exit;
+    if(!empty($image)) {
+        // Insert first to get the ID
+        mysqli_query($conn, "INSERT INTO slider_content (title, subtitle, image) VALUES ('$title', '$subtitle', '')");
+        $new_id = mysqli_insert_id($conn);
+        
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        $new_name = $new_id . '.' . $ext;
+        $folder = '../uploads/'.$new_name;
+        
+        if(move_uploaded_file($tmp_name, $folder)) {
+            mysqli_query($conn, "UPDATE slider_content SET image = '$new_name' WHERE id = $new_id");
+            $message[] = 'Slide added successfully!';
+            header('location:manage_slider.php');
+            exit;
+        }
     }
 }
 
@@ -45,7 +54,7 @@ if(isset($_GET['delete'])) {
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
-                        <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
+                        <span><img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
             </nav>
@@ -127,7 +136,7 @@ if(isset($_GET['delete'])) {
                                                 $query = mysqli_query($conn, "SELECT * FROM slider_content");
                                                 while($row = mysqli_fetch_assoc($query)) {
                                                     echo '<tr>
-                                                        <td><img src="../images/'.$row['image'].'" style="width:100px;"></td>
+                                                        <td><img src="../uploads/'.$row['image'].'" style="width:100px;"></td>
                                                         <td>'.$row['title'].'</td>
                                                         <td><a href="manage_slider.php?delete='.$row['id'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Delete slide?\')"><i class="fa fa-trash"></i></a></td>
                                                     </tr>';

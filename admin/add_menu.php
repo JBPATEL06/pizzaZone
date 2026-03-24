@@ -11,16 +11,26 @@ if(isset($_POST['add_product'])){
        $product_price = $_POST['product_price'];
        $product_image = $_FILES['product_image']['name'];
        $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-       $product_image_folder = 'images/'.$product_image;
        
        if(empty($product_name) || empty($product_price)|| empty($product_image)){
           $message[] = 'please fill out all';
        }else{
-          $insert = "INSERT INTO products(name,price,image) VALUES('$product_name','$product_price', '$product_image')";
-          $upload = mysqli_query($conn,$insert);
-          if($upload){
-             move_uploaded_file($product_image_tmp_name, $product_image_folder);
-             $message[] = 'new product added successfully';
+          // Insert first to get the ID
+          $insert = "INSERT INTO products(name,price,image) VALUES('$product_name','$product_price', '')";
+          $res = mysqli_query($conn,$insert);
+          if($res){
+             $new_id = mysqli_insert_id($conn);
+             $ext = pathinfo($product_image, PATHINFO_EXTENSION);
+             $new_name = $new_id . '.' . $ext;
+             $product_image_folder = '../uploads/' . $new_name;
+             
+             if(move_uploaded_file($product_image_tmp_name, $product_image_folder)){
+                // Update with the final filename
+                mysqli_query($conn, "UPDATE products SET image = '$new_name' WHERE id = $new_id");
+                $message[] = 'new product added successfully';
+             } else {
+                $message[] = 'Error uploading image';
+             }
           }else{
              $message[] = 'could not add the product';
           }
@@ -46,7 +56,7 @@ if(isset($message)){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>">
     <title>Add Menu</title>
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/helper.css" rel="stylesheet">
@@ -69,7 +79,7 @@ if(isset($message)){
             <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         
-                    <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
+                    <span><img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
                 <div class="navbar-collapse">

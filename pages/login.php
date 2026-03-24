@@ -31,13 +31,13 @@ include("headermenu.php");
 ?>
 
 <link rel="stylesheet" href="../css/loginStyle.css" type="text/css" media="all" />
-<div class="wrapper fadeInDown" style="background-image: url('../images/ban.png');">
+<div class="wrapper fadeInDown" style="background-image: url('../uploads/ban.png');">
   <div id="formContent" style="margin-top:5em;margin-bottom:5em;">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img style = "height: 75px;width: 75px;margin: 22px;" src="../images/user.png" id="icon" alt="User Icon" />
+      <img style = "height: 75px;width: 75px;margin: 22px;" src="../uploads/user.png" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->

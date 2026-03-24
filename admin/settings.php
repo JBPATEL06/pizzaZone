@@ -22,10 +22,12 @@ if(isset($_POST['submit'])) {
     if(!empty($_FILES['logo']['name'])) {
         $logo_name = $_FILES['logo']['name'];
         $logo_tmp_name = $_FILES['logo']['tmp_name'];
-        $logo_folder = '../images/'.$logo_name;
+        $ext = pathinfo($logo_name, PATHINFO_EXTENSION);
+        $new_logo_name = 'logo.' . $ext;
+        $logo_folder = '../uploads/'.$new_logo_name;
         
         if(move_uploaded_file($logo_tmp_name, $logo_folder)) {
-            mysqli_query($conn, "UPDATE site_settings SET setting_value = '$logo_name' WHERE setting_key = 'logo'");
+            mysqli_query($conn, "UPDATE site_settings SET setting_value = '$new_logo_name' WHERE setting_key = 'logo'");
         }
     }
     $message[] = 'Settings updated successfully!';
@@ -47,7 +49,7 @@ if(isset($_POST['submit'])) {
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
-                        <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
+                        <span><img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
             </nav>
@@ -105,7 +107,7 @@ if(isset($_POST['submit'])) {
                                                 <div class="form-group">
                                                     <label class="control-label">Site Logo</label>
                                                     <input type="file" name="logo" class="form-control">
-                                                    <small>Current Logo: <?php echo get_setting('logo'); ?></small>
+                                                    <small>Current Logo: <img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>" style="height:30px; vertical-align:middle;"></small>
                                                 </div>
                                             </div>
                                         </div>

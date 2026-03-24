@@ -16,22 +16,28 @@ if(isset($_POST['add'])) {
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
     $link = mysqli_real_escape_string($conn, $_POST['link']);
-    $image = $_FILES['image']['name'];
-    $tmp_name = $_FILES['image']['tmp_name'];
-    $folder = '../images/'.$image;
-    
-    if(move_uploaded_file($tmp_name, $folder)) {
-        mysqli_query($conn, "INSERT INTO site_content (section, title, description, image, link) VALUES ('$section', '$title', '$description', '$image', '$link')");
+    if(!empty($image)) {
+        // Insert first to get the ID
+        mysqli_query($conn, "INSERT INTO site_content (section, title, description, image, link) VALUES ('$section', '$title', '$description', '', '$link')");
+        $new_id = mysqli_insert_id($conn);
         
-        $redirect_page = 'homepage';
-        if (in_array($section, ['about_story', 'our_story_features'])) $redirect_page = 'ourstory';
-        elseif (strpos($section, 'services') !== false) $redirect_page = 'services';
-        elseif (strpos($section, 'gallery') !== false) $redirect_page = 'gallery';
-        elseif (strpos($section, 'review') !== false) $redirect_page = 'review';
-        elseif (strpos($section, 'faq') !== false) $redirect_page = 'faq';
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        $new_name = $new_id . '.' . $ext;
+        $folder = '../uploads/'.$new_name;
         
-        header('location:manage_content.php?page=' . $redirect_page);
-        exit;
+        if(move_uploaded_file($tmp_name, $folder)) {
+            mysqli_query($conn, "UPDATE site_content SET image = '$new_name' WHERE id = $new_id");
+            
+            $redirect_page = 'homepage';
+            if (in_array($section, ['about_story', 'our_story_features'])) $redirect_page = 'ourstory';
+            elseif (strpos($section, 'services') !== false) $redirect_page = 'services';
+            elseif (strpos($section, 'gallery') !== false) $redirect_page = 'gallery';
+            elseif (strpos($section, 'review') !== false) $redirect_page = 'review';
+            elseif (strpos($section, 'faq') !== false) $redirect_page = 'faq';
+            
+            header('location:manage_content.php?page=' . $redirect_page);
+            exit;
+        }
     }
 }
 
@@ -47,8 +53,11 @@ if(isset($_POST['update'])) {
     $image = $_FILES['image']['name'];
     if($image != '') {
         $tmp_name = $_FILES['image']['tmp_name'];
-        $folder = '../images/'.$image;
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        $new_name = $id . '.' . $ext;
+        $folder = '../uploads/'.$new_name;
         move_uploaded_file($tmp_name, $folder);
+        $image = $new_name;
     } else {
         $image = $old_image;
     }
@@ -105,7 +114,7 @@ if(isset($_GET['edit'])) {
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
-                        <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
+                        <span><img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
             </nav>
@@ -206,7 +215,7 @@ if(isset($_GET['edit'])) {
                                         <label>Image</label>
                                         <input type="file" name="image" class="form-control" <?php echo $edit_mode ? '' : 'required'; ?>>
                                         <?php if($edit_mode && $edit_data['image']): ?>
-                                            <img src="../images/<?php echo $edit_data['image']; ?>" style="width:100px; margin-top:10px;">
+                                            <img src="../uploads/<?php echo $edit_data['image']; ?>" style="width:100px; margin-top:10px;">
                                         <?php endif; ?>
                                     </div>
                                     <input type="submit" name="<?php echo $edit_mode ? 'update' : 'add'; ?>" class="btn btn-<?php echo $edit_mode ? 'warning' : 'success'; ?>" value="<?php echo $edit_mode ? 'Update Content' : 'Add Content'; ?>">
@@ -260,7 +269,7 @@ if(isset($_GET['edit'])) {
                                                     
                                                     echo '<tr>
                                                         <td>'.ucfirst($row['section']).'</td>
-                                                        <td><img src="../images/'.$row['image'].'" style="width:80px;"></td>
+                                                        <td><img src="../uploads/'.$row['image'].'" style="width:80px;"></td>
                                                         <td>'.$row['title'].'</td>
                                                         <td>
                                                             <a href="'.$edit_url.'" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>

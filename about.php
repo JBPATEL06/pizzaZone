@@ -29,7 +29,7 @@ include("pages/header.php");
 
     <div class="about-sec">
         <div class="img">
-            <img src="images/<?php echo $story_img; ?>" alt="FlowerZone Story">
+            <img src="uploads/<?php echo $story_img; ?>" alt="FlowerZone Story">
         </div>
         <div class="about-content">
             <p><?php echo $story_text; ?></p>

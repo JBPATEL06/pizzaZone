@@ -22,19 +22,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 </head>
 <body>
-   
 <!-- header section starts  -->
-
 <header class="header">
-
    <section class="flex">
-   <div class="logo"><a href="./index.php"><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="<?php echo get_setting('site_name', 'FlowerZone'); ?> Logo"></a>
-   </div>
-      
+      <div class="logo"><a href="index.php"><img src="uploads/<?php echo get_setting('logo', 'logo.png'); ?>"></a></div>
       <nav class="navbar">
-
-      
-         
          <a href="index.php">HOME</a>
          <a href="menu.php">COLLECTION</a>
          <a href="about.php">OUR STORY</a>
@@ -43,7 +35,6 @@ if (session_status() === PHP_SESSION_NONE) {
          <a href="gallery.php">GALLERY</a>
          <a href="review.php">REVIEWS</a>
          <a href="faq.php">FAQ</a>
-         
       </nav>
 
       <div class="icons">

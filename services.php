@@ -24,7 +24,7 @@ include("pages/header.php");
                 while ($fetch_services = mysqli_fetch_assoc($select_services)) {
         ?>
         <div class="inner-box">
-            <img src="images/<?php echo $fetch_services['image']; ?>" alt="<?php echo $fetch_services['title']; ?>">
+            <img src="uploads/<?php echo $fetch_services['image']; ?>" alt="<?php echo $fetch_services['title']; ?>">
             <h2><?php echo $fetch_services['title']; ?></h2>
             <p><?php echo $fetch_services['description']; ?></p>
             <br>

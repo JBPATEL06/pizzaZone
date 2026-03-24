@@ -28,7 +28,7 @@ include("pages/header.php");
           ?>
           <div class="col">
             <div class="testimonial">
-              <img src="images/<?php echo $fetch_review['image']; ?>" alt="<?php echo $fetch_review['title']; ?>">
+              <img src="uploads/<?php echo $fetch_review['image']; ?>" alt="<?php echo $fetch_review['title']; ?>">
               <div class="name"><?php echo $fetch_review['title']; ?></div>
               <div class="stars">
                 <i class="fas fa-star"></i>

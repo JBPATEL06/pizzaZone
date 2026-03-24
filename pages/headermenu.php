@@ -20,7 +20,7 @@
 <header class="header">
 
    <section class="flex">
-   <div class="logo"><a href="../index.php"><img src="../images/<?php echo get_setting('logo', 'logo.png'); ?>"></a>
+   <div class="logo"><a href="../index.php"><img src="../uploads/<?php echo get_setting('logo', 'logo.png'); ?>"></a>
    </div>
       <nav class="navbar">
          

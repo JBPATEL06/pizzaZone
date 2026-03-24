@@ -11,7 +11,7 @@ include("pages/header.php");
 
 <!-- custom css file link  -->
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="./images/logo.png" type="image/png">
+<link rel="icon" href="./uploads/<?php echo get_setting('logo', 'logo.png'); ?>" type="image/png">
 
 
 <div class="home-bg">
@@ -27,7 +27,7 @@ include("pages/header.php");
             while ($fetch_slider = mysqli_fetch_assoc($select_slider)) {
                ?>
                <div class="slide <?php echo $first ? 'active' : ''; ?>"
-                  style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('images/<?php echo $fetch_slider['image']; ?>');">
+                  style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('uploads/<?php echo $fetch_slider['image']; ?>');">
                   <div class="content">
                      <?php if(isset($_SESSION['username'])): ?>
                          <p style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600; text-shadow: 0 5px 25px rgba(0,0,0,0.8);">Welcome, <?php echo $_SESSION['username']; ?>!</p>
@@ -80,7 +80,7 @@ setInterval(next, 7000);
          while ($fetch_popular = mysqli_fetch_assoc($select_popular)) {
             ?>
             <div class="box">
-               <img src="images/<?php echo $fetch_popular['image']; ?>" alt="<?php echo $fetch_popular['title']; ?>">
+               <img src="uploads/<?php echo $fetch_popular['image']; ?>" alt="<?php echo $fetch_popular['title']; ?>">
                <h2><?php echo $fetch_popular['title']; ?></h2>
                <p><?php echo $fetch_popular['description']; ?></p>
                <a href="<?php echo $fetch_popular['link']; ?>">VIEW COLLECTION</a>
@@ -109,7 +109,7 @@ setInterval(next, 7000);
          while ($fetch_about = mysqli_fetch_assoc($select_about)) {
             ?>
             <div class="box">
-               <img src="images/<?php echo $fetch_about['image']; ?>" alt="<?php echo $fetch_about['title']; ?>">
+               <img src="uploads/<?php echo $fetch_about['image']; ?>" alt="<?php echo $fetch_about['title']; ?>">
                <h3><?php echo $fetch_about['title']; ?></h3>
                <p><?php echo $fetch_about['description']; ?></p>
                <a href="<?php echo $fetch_about['link']; ?>" class="btn">our collection</a>

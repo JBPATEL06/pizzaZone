@@ -79,7 +79,7 @@ if(isset($_GET['delete_all'])){
          ?>
 
          <tr>
-            <td data-label="preview"><img src="images/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
+            <td data-label="preview"><img src="uploads/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
             <td data-label="bouquet"><?php echo $fetch_cart['name']; ?></td>
             <td data-label="price">₹<?php echo number_format($fetch_cart['price']); ?>/-</td>
             <td data-label="quantity">

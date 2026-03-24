@@ -15,7 +15,7 @@ include("pages/header.php");
                 // No category filtering, just display all images
                 ?>
                 <div class="pic">
-                    <img src="images/<?php echo $fetch_gallery['image']; ?>" alt="<?php echo $fetch_gallery['title']; ?>">
+                    <img src="uploads/<?php echo $fetch_gallery['image']; ?>" alt="<?php echo $fetch_gallery['title']; ?>">
                 </div>
                 <?php
             }
