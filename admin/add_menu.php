@@ -69,7 +69,7 @@ if(isset($message)){
             <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         
-                    <span><img src="images/logo.png" alt="homepage" class="dark-logo" /></span>
+                    <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -129,7 +129,21 @@ if(isset($message)){
                             </ul>
                         </li>
 						 <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li>
-                         
+                         <li class="nav-label">Site Content</li>
+                        <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Pages</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="manage_content.php?page=homepage">Home Page</a></li>
+                                <li><a href="manage_content.php?page=ourstory">Our Story</a></li>
+                                <li><a href="manage_content.php?page=services">Services</a></li>
+                                <li><a href="manage_content.php?page=gallery">Gallery</a></li>
+                                <li><a href="manage_content.php?page=review">Testimonials</a></li>
+                                <li><a href="manage_content.php?page=faq">FAQs</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-label">Settings</li>
+                        <li> <a href="settings.php"><i class="fa fa-gear"></i><span>Global Settings</span></a></li>
+                        <li> <a href="manage_slider.php"><i class="fa fa-image"></i><span>Homepage Slider</span></a></li>
+                        <li> <a href="settings.php#contact-info"><i class="fa fa-phone"></i><span>Contact Info</span></a></li>
                     </ul>
                 </nav>
             
@@ -155,7 +169,7 @@ if(isset($message)){
                                         <div class="row p-t-20">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Dish Name</label>
+                                                    <label class="control-label">Bouquet Name</label>
                                                     <input type="text" name="product_name" class="form-control" >
                                                    </div>
                                             </div>                                

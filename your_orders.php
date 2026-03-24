@@ -25,18 +25,24 @@ if(!isset($_SESSION['userData'])){
 	<style type="text/css" rel="stylesheet">
 		
 
-.btn1{
-	display:flexbox;
-   width:15px;
-   margin-top: 1rem;
+.btn1 {
+   display: inline-block;
    border-radius: .5rem;
-   padding:1rem 3rem;
-   font-size: 2rem;
-   color:var(--white);
-   background-color: var(--red);
+   padding: 1rem 1.5rem;
+   background-color: #ff4d4d;
+   color: var(--white) !important;
    cursor: pointer;
-   text-transform: capitalize;
    text-align: center;
+   transition: all 0.3s ease;
+}
+
+.btn1 i {
+   color: var(--white) !important;
+}
+
+.btn1:hover {
+   background-color: var(--black);
+   transform: translateY(-2px);
 }
 .indent-small {
   margin-left: 5px;
@@ -130,7 +136,7 @@ td, th {
                             <div class="bg-gray">
                                 <div class="row">
 								
-							<table class="table table-bordered table-hover">
+							<table class="table table-bordered table-hover responsive-table">
 						 	 <thead style = "background: #404040; color:white;">
 							<tr>
 							
@@ -160,10 +166,10 @@ td, th {
 						
 							?>
 												<tr>	
-														 <td data-column="total_products"> <?php echo $row['total_products']; ?></td>
-														  <td data-column="method"> <?php echo $row['method']; ?></td>
-														  <td data-column="total_price">₹<?php echo $row['total_price']; ?></td>
-														   <td data-column="status"> 
+														 <td data-label="Item"> <?php echo $row['total_products']; ?></td>
+														  <td data-label="Method"> <?php echo $row['method']; ?></td>
+														  <td data-label="Price">₹<?php echo $row['total_price']; ?></td>
+														   <td data-label="Status"> 
 														   <?php 
 																			$status=$row['status'];
 																			if($status=="" or $status=="NULL")
@@ -199,11 +205,11 @@ td, th {
 												
 																{
                 												  ?>
-																	<td data-column="Action"> Order Delivered <a><i class="fa fa-check-circle" style="font-size:16px"></i></a></td> 
+																	<td data-label="Action"> Order Delivered <a><i class="fa fa-check-circle" style="font-size:16px"></i></a></td> 
             												      <?php
           														  } else {
              												     ?>
-																	<td data-column="Action"> <a href="delete_orders.php?order_del=<?php echo $row['id'];?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn1"><i class="fas fa-trash" style="font-size:16px"></i></a></td> 
+																	<td data-label="Action"> <a href="delete_orders.php?order_del=<?php echo $row['id'];?>" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn1"><i class="fas fa-trash" style="font-size:16px"></i></a></td> 
 
              									</tr>
 																	

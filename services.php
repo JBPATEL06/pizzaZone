@@ -18,26 +18,22 @@ include("pages/header.php");
     <h1 class="heading"> our Services</h1>
 
     <div class="service-content">
+        <?php
+            $select_services = mysqli_query($conn, "SELECT * FROM `site_content` WHERE section LIKE 'services%' ORDER BY section ASC, order_priority ASC");
+            if (mysqli_num_rows($select_services) > 0) {
+                while ($fetch_services = mysqli_fetch_assoc($select_services)) {
+        ?>
         <div class="inner-box">
-            <img src="images/freedelivery.png" alt="">
-            <h2>Free Delivery</h2>
-            <p>The icing on the cake or more aptly the extra cheese on your already fabulous pizza is that Domino’s takes only half an hour for its pizza delivery service.</p>
+            <img src="images/<?php echo $fetch_services['image']; ?>" alt="<?php echo $fetch_services['title']; ?>">
+            <h2><?php echo $fetch_services['title']; ?></h2>
+            <p><?php echo $fetch_services['description']; ?></p>
             <br>
             <a href="contact.php" class="btn">Read More</a>
         </div>
-        <div class="inner-box">
-            <img src="images/onlinepay.png" alt="">
-            <h2>Online Payment</h2>
-            <p>Customers can Pay Through differnt Payment Options  Like Online Payment Apps ,Net-Banking Or Cash On Delivery. <br><br>  </p>
-            <a href="contact.php" class="btn">Read More</a>
-        </div>
-        <div class="inner-box">
-            <img src="images/freshfood.png" alt="">
-            <h2>Fresh Food</h2>
-            <p>You want the best pizza to be cooked to a crisp, the toppings should be well-cooked and the whole thing should be served piping hot.</p>
-            <br>
-            <a href="contact.php" class="btn">Read More</a>
-        </div>
+        <?php
+                }
+            }
+        ?>
     </div>
 </section>
 <?php

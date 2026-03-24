@@ -37,7 +37,8 @@
 .inner-box img {
     height: 18rem;
     object-fit: contain;
-    margin-bottom: 2.5rem;
+    display: block;
+    margin: 0 auto 2.5rem;
 }
 
 .inner-box h2 {

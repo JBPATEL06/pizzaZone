@@ -71,7 +71,7 @@ if(isset($_REQUEST['pwdrst']))
      <p><b>Hello!</b></p>
      <p>You are recieving this email because we recieved a password reset request for your account.</p>
      <br>
-     <p><button class="btn btn-primary"><a href="http://localhost/flowerzone/pages/passwordreset.php?secret='.base64_encode($emailId).'">Reset Password</a></button></p>
+     <p><button class="btn btn-primary"><a href="http://localhost/money/pizzaZone/pages/passwordreset.php?secret='.base64_encode($emailId).'">Reset Password</a></button></p>
      <br>
      <p>If you did not request a password reset, no further action is required.</p>
     </div>';

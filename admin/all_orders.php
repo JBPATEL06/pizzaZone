@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 include("connection.php");
 session_start();
@@ -11,7 +9,8 @@ if(isset($_GET['id'])){
                                                      
      }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +42,7 @@ if(isset($_GET['id'])){
             <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         
-                    <span><img src="images/logo.png" alt="homepage" class="dark-logo" /></span>
+                    <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -109,6 +108,21 @@ if(isset($_GET['id'])){
                         </li>
 						 <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li>
                          
+                        <li class="nav-label">Site Content</li>
+                        <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Pages</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="manage_content.php?page=homepage">Home Page</a></li>
+                                <li><a href="manage_content.php?page=ourstory">Our Story</a></li>
+                                <li><a href="manage_content.php?page=services">Services</a></li>
+                                <li><a href="manage_content.php?page=gallery">Gallery</a></li>
+                                <li><a href="manage_content.php?page=review">Testimonials</a></li>
+                                <li><a href="manage_content.php?page=faq">FAQs</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-label">Settings</li>
+                        <li> <a href="settings.php"><i class="fa fa-gear"></i><span>Global Settings</span></a></li>
+                        <li> <a href="manage_slider.php"><i class="fa fa-image"></i><span>Homepage Slider</span></a></li>
+                        <li> <a href="settings.php#contact-info"><i class="fa fa-phone"></i><span>Contact Info</span></a></li>
                     </ul>
                 </nav>
         
@@ -130,7 +144,7 @@ if(isset($_GET['id'])){
                             </div>
                              
                                 <div class="table-responsive m-t-40">
-                                    <table id="myTable" class="table table-bordered table-striped">
+                                    <table id="myTable" class="table table-bordered table-striped responsive-table">
                                     <thead class="thead-dark">
                                              <tr>
                                                 <th>Name</th>		
@@ -161,30 +175,30 @@ if(isset($_GET['id'])){
 																				?>
 																				<?php
 																					echo ' <tr>
-																					           <td>'.$rows['name'].'</td>
-                                                                                               <td>'.$rows['number'].'</td>
-                                                                                               <td>'.$rows['method'].'</td>
-																								<td>'.$rows['street'].'</td>
-																								<td>'.$rows['total_products'].'</td>
-																								<td>₹.'.$rows['total_price'].'</td>';
+																					           <td data-label="Name">'.$rows['name'].'</td>
+                                                                                               <td data-label="Number">'.$rows['number'].'</td>
+                                                                                               <td data-label="Method">'.$rows['method'].'</td>
+																								<td data-label="Street">'.$rows['street'].'</td>
+																								<td data-label="Total Products">'.$rows['total_products'].'</td>
+																								<td data-label="Price">₹.'.$rows['total_price'].'</td>';
 																								?>
 																								<?php 
 																			$status=$rows['status'];
 																			if($status=="" or $status=="NULL")
 																			{
 																			?>
-																			<td> <button type="button" class="btn btn-info"><span class="fa fa-bars"  aria-hidden="true" ></span> Dispatch</button></td>
-																		   <?php 
+																			<td data-label="Status"> <button type="button" class="btn btn-info"><span class="fa fa-bars"  aria-hidden="true" ></span> Dispatch</button></td>
+ 																		   <?php 
 																			  }
 																			   if($status=="in process")
 																			 { ?>
-																			<td> <button type="button" class="btn btn-warning"><span class="fa fa-cog fa-spin"  aria-hidden="true" ></span> On The Way!</button></td> 
+																			<td data-label="Status"> <button type="button" class="btn btn-warning"><span class="fa fa-cog fa-spin"  aria-hidden="true" ></span> On The Way!</button></td> 
 																			<?php
 																				}
 																			if($status=="closed")
 																				{
 																			?>
-																			<td> <button type="button" class="btn btn-primary" ><span  class="fa fa-check-circle" aria-hidden="true"></span> Delivered</button></td> 
+																			<td data-label="Status"> <button type="button" class="btn btn-primary" ><span  class="fa fa-check-circle" aria-hidden="true"></span> Delivered</button></td> 
 																			<?php 
 																			} 
 																			?>
@@ -192,12 +206,12 @@ if(isset($_GET['id'])){
 																			if($status=="rejected")
 																				{
 																			?>
-																			<td> <button type="button" class="btn btn-danger"> <i class="fa fa-close"></i> Cancelled</button></td> 
+																			<td data-label="Status"> <button type="button" class="btn btn-danger"> <i class="fa fa-close"></i> Cancelled</button></td> 
 																			<?php 
 																			} 
 																			?>
 																						
-																									 <td>
+																									 <td data-label="Action">
 																									 <a href="all_orders.php?id=<?php echo $rows['id']; ?>" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fa fa-trash" style="font-size:16px"></i></a> 
 																								<?php
 																								echo '<a href="view_order.php?user_upd='.$rows['id'].'" " class="btn btn-info btn-flat btn-addon btn-sm m-b-10 m-l-5"><i class="fa fa-edit"></i></a>

@@ -55,7 +55,7 @@ if(isset($_GET['delete_all'])){
 
    <h1 class="heading">Your Floral Order</h1>
 
-   <table>
+   <table class="responsive-table">
 
       <thead>
          <th>preview</th>
@@ -79,18 +79,18 @@ if(isset($_GET['delete_all'])){
          ?>
 
          <tr>
-            <td><img src="images/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
-            <td><?php echo $fetch_cart['name']; ?></td>
-            <td>₹<?php echo number_format($fetch_cart['price']); ?>/-</td>
-            <td>
+            <td data-label="preview"><img src="images/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
+            <td data-label="bouquet"><?php echo $fetch_cart['name']; ?></td>
+            <td data-label="price">₹<?php echo number_format($fetch_cart['price']); ?>/-</td>
+            <td data-label="quantity">
                <form action="" method="post">
                   <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['id']; ?>" >
                   <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
                   <input type="submit" value="update" name="update_update_btn">
                </form>   
             </td>
-            <td>₹<?php echo number_format($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</td>
-            <td><a href="cart.php?remove=<?php echo $fetch_cart['id']; ?>" onclick="return confirm('remove bouquet from order?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
+            <td data-label="subtotal">₹<?php echo number_format($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</td>
+            <td data-label="action"><a href="cart.php?remove=<?php echo $fetch_cart['id']; ?>" onclick="return confirm('remove bouquet from order?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
          </tr>
          <?php
            $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);  
@@ -98,10 +98,10 @@ if(isset($_GET['delete_all'])){
          };
          ?>
          <tr class="table-bottom">
-            <td><a href="menu.php" class="option-btn" style="margin-top: 0;">explore more</a></td>
-            <td colspan="3">total amount</td>
-            <td>₹<?php echo $grand_total; ?>/-</td>
-            <td><a href="cart.php?delete_all" onclick="return confirm('clear entire order?');" class="delete-btn"> <i class="fas fa-trash"></i> clear all </a></td>
+            <td data-label="action"><a href="menu.php" class="option-btn" style="margin-top: 0;">explore more</a></td>
+            <td colspan="3" data-label="total amount">total amount</td>
+            <td data-label="total amount">₹<?php echo $grand_total; ?>/-</td>
+            <td data-label="action"><a href="cart.php?delete_all" onclick="return confirm('clear entire order?');" class="delete-btn"> <i class="fas fa-trash"></i> clear all </a></td>
          </tr>
 
       </tbody>

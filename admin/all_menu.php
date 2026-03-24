@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php 
 session_start();
-$servername = "localhost"; //server
-$username = "root"; //username
-$password = ""; //password
-$dbname = "flowerzone";  //database
+include("connection.php");
+$err = ""; // to prevent any notice
+$db = $conn;
 
-// Create connection
-$db = mysqli_connect($servername, $username, $password, $dbname); // connecting 
-// Check connection
-if (!$db) {       //checking connection to DB	
-    die("Connection failed: " . mysqli_connect_error());
-}
 if(isset($_GET['id'])){
                                                   
     $id = $_GET['id'];
@@ -21,6 +12,8 @@ if(isset($_GET['id'])){
     
  }
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
@@ -63,7 +56,7 @@ if(isset($_GET['id'])){
             <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
                         
-                    <span><img src="images/logo.png" alt="homepage" class="dark-logo" /></span>
+                    <span><img src="images/<?php echo get_setting('logo', 'logo.png'); ?>" alt="homepage" class="dark-logo" style="max-height:40px;" /></span>
                     </a>
                 </div>
                 <div class="navbar-collapse">
@@ -128,7 +121,21 @@ if(isset($_GET['id'])){
                             </ul>
                         </li>
 						 <li> <a href="all_orders.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span></a></li>
-                         
+                         <li class="nav-label">Site Content</li>
+                        <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Pages</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="manage_content.php?page=homepage">Home Page</a></li>
+                                <li><a href="manage_content.php?page=ourstory">Our Story</a></li>
+                                <li><a href="manage_content.php?page=services">Services</a></li>
+                                <li><a href="manage_content.php?page=gallery">Gallery</a></li>
+                                <li><a href="manage_content.php?page=review">Testimonials</a></li>
+                                <li><a href="manage_content.php?page=faq">FAQs</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-label">Settings</li>
+                        <li> <a href="settings.php"><i class="fa fa-gear"></i><span>Global Settings</span></a></li>
+                        <li> <a href="manage_slider.php"><i class="fa fa-image"></i><span>Homepage Slider</span></a></li>
+                        <li> <a href="settings.php#contact-info"><i class="fa fa-phone"></i><span>Contact Info</span></a></li>
                     </ul>
                 </nav>
          
@@ -152,7 +159,7 @@ if(isset($_GET['id'])){
                                 
 								
                                 <div class="table-responsive m-t-40">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered responsive-table" cellspacing="0" width="100%">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>Product Name</th>
@@ -191,12 +198,12 @@ if(isset($_GET['id'])){
                                                                             $newquery=mysqli_query($db,$mql);
                                                                             $fetch=mysqli_fetch_array($newquery);
 																				
-																					echo '<tr><td>'.$fetch['name'].'</td>
+																					echo '<tr><td data-label="Product Name">'.$fetch['name'].'</td>
 																					
-																					<td>₹'.$rows['price'].'</td>
+																					<td data-label="Product Price">₹'.$rows['price'].'</td>
 																								
 																								
-																								<td><div class="col-md-3 col-lg-8 m-b-10">
+																								<td data-label="Product Image"><div class="col-md-3 col-lg-8 m-b-10">
 																								<center><img src="images/'.$rows['image'].'" class="img-responsive  radius" style="max-height:150px;max-width:150px;" /></center>
 																								</div></td>
 																								

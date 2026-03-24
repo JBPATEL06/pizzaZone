@@ -21,10 +21,15 @@ include("pages/header.php");
         <br>
         <h1>TESTIMONIALS</h1>
         <div class="row">
+          <?php
+             $select_review = mysqli_query($conn, "SELECT * FROM `site_content` WHERE section LIKE 'review%' ORDER BY section ASC, order_priority ASC");
+             if (mysqli_num_rows($select_review) > 0) {
+                while ($fetch_review = mysqli_fetch_assoc($select_review)) {
+          ?>
           <div class="col">
             <div class="testimonial">
-              <img src="images/t1.png" alt="">
-              <div class="name">Full name</div>
+              <img src="images/<?php echo $fetch_review['image']; ?>" alt="<?php echo $fetch_review['title']; ?>">
+              <div class="name"><?php echo $fetch_review['title']; ?></div>
               <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -33,49 +38,13 @@ include("pages/header.php");
                 <i class="fas fa-star"></i>
               </div>
 
-              <p>
-              The best pizza we ever had in (City)!! The pizza was so delicious and with so many flavor.
-You could just take away or standing finish your pizza in the store.              </p>
+              <p><?php echo $fetch_review['description']; ?></p>
             </div>
           </div>
-
-          <div class="col">
-            <div class="testimonial">
-              <img src="images/t2.png" alt="">
-              <div class="name">Full name</div>
-              <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <p>
-               They offer an awesome range of fresh pizzas. I liked dining here. Staff members are always friendly, prices are reasonable and the spot is always kept clean. <br>
-
-</p>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="testimonial">
-              <img src="images/t3.png" alt="">
-              <div class="name">Full name</div>
-              <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <p>
-              05. I had the best pizza of my life at that time. Since then I have visited this place numerous times and my opinion about this pizza has still not changed. <br> <br>  
-
-</p>
-            </div>
-          </div>
+          <?php
+                }
+             }
+          ?>
         </div>
       </div>
     </div>

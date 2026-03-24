@@ -250,3 +250,98 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Database tables for Dynamic Content Phase 1
+
+-- Table for global site settings
+CREATE TABLE IF NOT EXISTS `site_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `setting_key` varchar(50) NOT NULL UNIQUE,
+  `setting_value` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table for homepage slider/banners
+CREATE TABLE IF NOT EXISTS `slider_content` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `subtitle` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Seed initial data
+INSERT IGNORE INTO `site_settings` (`setting_key`, `setting_value`) VALUES 
+('logo', 'logo.png'),
+('site_name', 'FlowerZone'),
+('footer_text', '© Copyright @ 2026 FlowerZone By Rutvik Parmar & Nayan Jadav | All Rights Reserved!');
+
+INSERT IGNORE INTO `slider_content` (`title`, `subtitle`, `image`) VALUES 
+('Fresh Floral <br> Arrangements', 'Handpicked just for you', 'home-img-1.png'),
+('Premium <br> Bouquets', 'Elegant designs for every occasion', 'home-img-2.png'),
+('Same Day <br> Delivery', 'Surprise your loved ones in no time', 'home-img-3.png');
+-- Further Dynamic Content Expansion
+
+CREATE TABLE IF NOT EXISTS `site_content` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `section` varchar(50) NOT NULL, -- 'popular', 'about', etc.
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `image` varchar(255) NOT NULL,
+  `link` varchar(255) DEFAULT 'menu.php',
+  `order_priority` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Seed Popular Section
+INSERT IGNORE INTO `site_content` (`section`, `title`, `description`, `image`, `order_priority`) VALUES 
+('popular', 'EXOTIC COLLECTION', 'A delight for floral enthusiasts! Choose from our wide range of rare and exotic blooms, curated to perfection.', 'maxvage.jpg', 1),
+('popular', 'WEDDING GRACE', 'A selection that elegantly carries the weight of pure love, with white lilies and soft roses.', 'paneer.jpg', 2),
+('popular', 'ORCHID ELEGANCE', 'It is sophisticated. It is timeless. It is FlowerZone signature. Exotic orchids with a touch of luxury.', 'makhni.jpg', 3);
+
+-- Seed About Section
+INSERT IGNORE INTO `site_content` (`section`, `title`, `description`, `image`, `order_priority`) VALUES 
+('about', 'grown with care', 'No matter the occasion, flowers always convey the right message. Especially a bouquet that gives you freedom to customize.', 'about-1.svg', 1),
+('about', 'express floral delivery', 'Stop searching blindly for flowers. Order from FlowerZone for a fresh, beautiful bouquet at your doorstep in no time.', 'about-2.svg', 2),
+('about', 'cherish special moments', 'Celebrate your milestones with our premium floral arrangements. Check out our seasonal combos starting from ₹499.', 'about-3.svg', 3);
+-- SEEDING FOR PHASE 2 DYNAMIC CONTENT
+
+-- 1. Services Section
+INSERT INTO `site_content` (`section`, `title`, `description`, `image`, `order_priority`) VALUES
+('services', 'Free Delivery', 'The perfect ending to your floral gift is a hassle-free arrival. FlowerZone ensures your bouquets reach their destination in pristine condition within our delivery window.', 'freedelivery.png', 1),
+('services', 'Online Payment', 'Securely checkout using various payment methods. We support all major UPI apps, cards, and net-banking for a seamless floral shopping experience.', 'onlinepay.png', 2),
+('services', 'Freshly Picked', 'We guarantee the freshest blooms. Each bouquet is composed of flowers hand-picked at their peak to ensure lasting beauty and fragrance.', 'freshfood.png', 3);
+
+-- 2. Testimonials Section
+INSERT INTO `site_content` (`section`, `title`, `description`, `image`, `order_priority`) VALUES
+('review', 'Sarah Johnson', 'The "Wedding Grace" bouquet I ordered for my anniversary was absolutely stunning. The lilies were so fresh and lasted for over a week! Highly recommended.', 't1.png', 1),
+('review', 'Michael Chen', 'I needed a last-minute gift and FlowerZone delivered. The "Exotic Collection" is breathe-taking. Excellent service and quality.', 't2.png', 2),
+('review', 'Priya Sharma', 'Finest floral boutique in the city. The packaging was so premium and the orchids were exquisite. Will definitely order again.', 't3.png', 3);
+
+-- 3. Gallery Section
+INSERT INTO `site_content` (`section`, `title`, `image`, `order_priority`) VALUES
+('gallery', 'Spring Morning', 'gallery/g1.jpg', 1),
+('gallery', 'Rose Romance', 'gallery/g2.jpg', 2),
+('gallery', 'Lily Love', 'gallery/g3.jpg', 3),
+('gallery', 'Orchid Glow', 'gallery/g4.jpg', 4),
+('gallery', 'Petal Power', 'gallery/p1.jpg', 5),
+('gallery', 'Vibrant Vases', 'gallery/p2.jpg', 6),
+('gallery', 'Garden Fresh', 'gallery/p3.jpg', 7),
+('gallery', 'Lush Leaves', 'gallery/p4.jpg', 8),
+('gallery', 'Classic Colors', 'gallery/c1.jpg', 9),
+('gallery', 'Modern Mix', 'gallery/c2.jpg', 10),
+('gallery', 'Simple Smiles', 'gallery/c3.jpg', 11),
+('gallery', 'Bloom Blast', 'gallery/c4.jpg', 12);
+
+-- 4. FAQ Section
+INSERT INTO `site_content` (`section`, `title`, `description`, `order_priority`) VALUES
+('faq', 'What is Contactless Delivery?', 'Contactless Delivery means there is no direct contact between the customer and the delivery rider. The rider will leave the bouquet at your doorstep and notify you via call or message.', 1),
+('faq', 'Can I do Cash-on-delivery for contactless delivery?', 'No, to ensure a completely contactless experience, we recommend using online payment methods for doorstep drops.', 2),
+('faq', 'How do I know where my bouquets will be kept?', 'You can specify instructions while placing the order. By default, the rider will place it in a safe spot at your entrance.', 3),
+('faq', 'How will I know FlowerZone has received my order?', 'Once you submit your order, you will receive an instant confirmation and you can track the status in the "Your Orders" section.', 4);
+
+-- 5. Additional Settings
+INSERT IGNORE INTO `site_settings` (`setting_key`, `setting_value`) VALUES 
+('mid_banner', 'Home.png'),
+('about_story_img', 'services.png'),
+('about_story_text', 'FlowerZone is a bespoke floral boutique dedicated to bringing nature\'s finest creations to your doorstep. Our philosophy is rooted in elegance, quality, and the timeless language of flowers.');

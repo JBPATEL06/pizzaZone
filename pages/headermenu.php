@@ -20,7 +20,7 @@
 <header class="header">
 
    <section class="flex">
-   <div class="logo"><a href="../index.php"><img src="../images/logo.png"></a>
+   <div class="logo"><a href="../index.php"><img src="../images/<?php echo get_setting('logo', 'logo.png'); ?>"></a>
    </div>
       <nav class="navbar">
          
@@ -45,11 +45,11 @@
             } else {
                   ?>
                    <a class="test" href=""><div class="fas fa-box"></div></a>        
-
+                   <a href="../cart.php"><div id="cart-btn" class="fas fa-shopping-cart"></div></a>
                <?php   
                   
             }
-            ?>      <a href="../cart.php"><div id="cart-btn" class="fas fa-shopping-cart"></div></a>
+            ?>
       </div>
 
    </section>

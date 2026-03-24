@@ -127,13 +127,15 @@ body {
 }
 
 .delete-btn {
-   background: #e74c3c;
-   padding: 1rem 2rem;
+   background: #ff4d4d;
+   padding: 1.2rem 2.5rem;
    font-size: 1.4rem;
+   margin: .5rem 0;
 }
 
 .delete-btn:hover {
    background: var(--black);
+   color: var(--white);
 }
 
 /* Checkout Page Styles */
